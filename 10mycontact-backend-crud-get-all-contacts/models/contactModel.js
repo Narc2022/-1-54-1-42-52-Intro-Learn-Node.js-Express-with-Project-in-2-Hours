@@ -8,11 +8,11 @@ const contactSchema = mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true, "Please add the contact email"],
+      required: [true, "Please add the contact email address"],
     },
     phone: {
       type: String,
-      required: [true, "Please add the contact phone"],
+      required: [true, "Please add the contact phone number"],
     },
   },
   {
@@ -20,4 +20,4 @@ const contactSchema = mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Contact",contactSchema)
+module.exports = mongoose.model("Contact", contactSchema);

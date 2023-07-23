@@ -34,13 +34,32 @@ const createContact = asyncHandler(async (req, res) => {
 // @access public
 
 const getContact = asyncHandler(async (req, res) => {
-  const contact = await Contact.findById(req.params.id);
-  if (!contact) {
+  const timeout = 5000; // Set a timeout value (in milliseconds), e.g., 5000ms (5 seconds)
+  const contactPromise = Contact.findById(req.params.id);
+
+  // Use Promise.race to race the actual operation against a timeout promise
+  try {
+    const contact = await Promise.race([
+      contactPromise, // The actual asynchronous operation
+      new Promise((_, reject) => {
+        // A timeout promise that rejects after the specified timeout
+        setTimeout(() => reject(new Error("Operation timed out")), timeout);
+      }),
+    ]);
+
+    if (!contact) {
+      res.status(404);
+      throw new Error("Contact not found");
+    }
+
+    res.status(200).json(contact);
+  } catch (error) {
+    // Handle the error appropriately
     res.status(404);
     throw new Error("Contact not found");
   }
-  res.status(200).json(contact);
 });
+
 // @desc update contacts
 // @route PUT /api/contacts
 // @access public

@@ -1,2 +1,3 @@
 PORT = 5001
-CONNECTION_STRING=mongodb+srv://<username>:<password>@cluster0.appv4dh.mongodb.net/mycontacts-backend?retryWrites=true&w=majority
+CONNECTION_STRING=mongodb+srv://sachin243:sachin243@cluster0.appv4dh.mongodb.net/mycontacts-backend?retryWrites=true&w=majority
+ACCESS_TOKEN_SECRET = wertyuiopsdfghjklsdfghkldf

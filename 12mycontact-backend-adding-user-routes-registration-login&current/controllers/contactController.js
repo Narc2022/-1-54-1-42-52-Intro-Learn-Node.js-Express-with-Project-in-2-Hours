@@ -2,16 +2,16 @@ const asyncHandler = require("express-async-handler");
 const Contact = require("../models/contactModel");
 // @desc Get all contacts
 // @route GET /api/contacts
-// @access public
+// @access private
 
 const getContacts = asyncHandler(async (req, res) => {
-  const contact = await Contact.find();
+  const contact = await Contact.find({ user_id: req.user.id });
   res.status(200).json(contact);
 });
 
 // @desc create all contact
 // @route POST /api/contacts
-// @access public
+// @access private
 
 const createContact = asyncHandler(async (req, res) => {
   console.log("Request Body is :", req.body);
@@ -24,6 +24,7 @@ const createContact = asyncHandler(async (req, res) => {
       name,
       email,
       phone,
+      user_id: req.user.id,
     });
     res.status(201).json(contact);
   }
@@ -31,7 +32,7 @@ const createContact = asyncHandler(async (req, res) => {
 
 // @desc Get single contact
 // @route GET /api/contacts/:id
-// @access public
+// @access private
 
 const getContact = asyncHandler(async (req, res) => {
   const timeout = 5000; // Set a timeout value (in milliseconds), e.g., 5000ms (5 seconds)
@@ -62,7 +63,7 @@ const getContact = asyncHandler(async (req, res) => {
 
 // @desc update contacts
 // @route PUT /api/contacts
-// @access public
+// @access private
 
 const updateContact = asyncHandler(async (req, res) => {
   const timeout = 5000; // Set a timeout value (in milliseconds), e.g., 5000ms (5 seconds)
@@ -103,7 +104,7 @@ const updateContact = asyncHandler(async (req, res) => {
 
 // @desc create all contacts
 // @route DELETE /api/contacts:id
-// @access public
+// @access private
 
 const deleteContact = asyncHandler(async (req, res) => {
   const timeout = 5000; // Set a timeout value (in milliseconds), e.g., 5000ms (5 seconds)

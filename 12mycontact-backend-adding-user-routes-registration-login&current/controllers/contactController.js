@@ -104,10 +104,6 @@ const updateContact = asyncHandler(async (req, res) => {
   }
 });
 
-// {
-//   res.status(200).json({ message: `update contact for ${req.params.id}` });
-// });
-
 // @desc create all contacts
 // @route DELETE /api/contacts:id
 // @access private

@@ -1,0 +1,7 @@
+/\***\*\*\*\***
+create .env file
+PORT = 5001
+CONNECTION_STRING=mongodb+srv://<username>:<password>@cluster0.appv4dh.mongodb.net/mycontacts-backend?retryWrites=true&w=majority
+ACCESS_TOKEN_SECRET = wertyuiopsdfghjklsdfghkldf \***\*\*\*\*\***/
+
+youtube link:-https://www.youtube.com/watch?v=H9M02of22z4
